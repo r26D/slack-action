@@ -10,7 +10,6 @@ inputs:
     description: "This is a url for an image to use"
 runs:
   using: 'docker'
-  #image: 'Dockerfile'
   image: "docker://delmendo/slack-action:latest"
   args:
     - ${{ inputs.headline }}
