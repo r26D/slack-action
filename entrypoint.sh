@@ -20,18 +20,18 @@ if [[ -z "${1}" ]]; then
 fi
 if [[ -z "${2}" ]]; then
   #Just a headline
-  cp -f "templates/headline.json" "message.json"
+  cp -f "/templates/headline.json" "message.json"
 
   replace_in_file "HEADLINE" "${1}" "message.json"
 
 else
   if [[ -z "${3}" ]]; then
-    cp -f "templates/body.json" "message.json"
+    cp -f "/templates/body.json" "message.json"
 
     replace_in_file "HEADLINE" "${1}" "message.json"
     replace_in_file "BODY" "${2}" "message.json"
   else
-    cp -f "templates/body_with_image.json" "message.json"
+    cp -f "/templates/body_with_image.json" "message.json"
 
     replace_in_file "HEADLINE" "${1}" "message.json"
     replace_in_file "BODY" "${2}" "message.json"
