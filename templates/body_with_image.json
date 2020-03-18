@@ -1,0 +1,27 @@
+{
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*HEADLINE*"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "block_id": "section567",
+      "text": {
+        "type": "mrkdwn",
+        "text": "BODY"
+      },
+      "accessory": {
+        "type": "image",
+        "image_url": "IMAGE_URL",
+        "alt_text": "alt text for image"
+      }
+    }
+  ]
+}
