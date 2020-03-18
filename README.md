@@ -8,7 +8,6 @@ This action prints "Hello World" to the log or "Hello" + the name of a person to
 
 You must set an env with the url of the slack web hook to use for the action.
 
-
 ## Inputs
 
 ### `headline`
