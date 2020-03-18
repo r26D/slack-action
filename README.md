@@ -26,7 +26,7 @@ Emojis can be done inline as text  :smile:
 ```yaml
 uses: r26d/slack-action@master
 env:
-  SLACK_WEBHOOK_URL: ${{ secreats.SLACK_WEBHOOK_URL}}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL}}
 with:
   headline: "My First Headline"
   body: "I hope this makes things easier"
