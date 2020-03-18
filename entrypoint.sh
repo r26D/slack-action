@@ -40,7 +40,4 @@ else
   fi
 fi
 
-#curl -X POST -H 'Content-type: application/json'  --data '{"blocks":[ { "type":"section", "text":{ "type":"mrkdwn", "text":"#Headline" } }, { "type":"section", "block_id":"section567", "text":{ "type":"mrkdwn", "text":"Message" }, "accessory":{ "type":"image", "image_url":"https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" } } ] }' https://hooks.slack.com/services/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
-#curl -X POST -v  -H 'Content-type: application/json'  --data '{"blocks":[{"type": "section", "text": { "type":"mrkdwn", "text":"*Headline*" }}]}' https://hooks.slack.com/services/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
-curl -X POST -v -H 'Content-type: application/json' --data @message.json https://hooks.slack.com/services/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
-#./entrypoint.sh  "Headline" "Message" "https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+curl -X POST -v -H 'Content-type: application/json' --data @message.json $SLACK_WEBHOOK_URL
