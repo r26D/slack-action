@@ -1,11 +1,11 @@
 name: 'Slack Action'
-description: 'This action makes it easy to send a Slack WebHook Message"
+description: 'This action makes it easy to send a Slack WebHook Message'
 inputs:
   headline:
     description: "This is the bold headline for the block"
     required: true
   body:
-    description: "This is the main message"
+    description: 'This is the main message'
   imageUrl:
     description: "This is a url for an image to use"
 runs:
