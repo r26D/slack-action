@@ -57,4 +57,5 @@ else
   fi
 fi
 
-curl -X POST -v -H 'Content-type: application/json' --data @message.json $SLACK_WEBHOOK_URL
+#curl -X POST -v -H 'Content-type: application/json' --data @message.json $SLACK_WEBHOOK_URL
+curl -X POST -s -H 'Content-type: application/json' --data @message.json $SLACK_WEBHOOK_URL
