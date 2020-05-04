@@ -19,10 +19,3 @@ inputs:
 runs:
   using: 'docker'
   image: "docker://delmendo/slack-action:latest"
-  args:
-    - ${{ inputs.channel }}
-    - ${{ inputs.headline }}
-    - ${{ inputs.username }}
-    - ${{ inputs.iconEmoji }}
-    - ${{ inputs.body }}
-    - ${{ inputs.imageUrl }}

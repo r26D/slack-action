@@ -14,49 +14,47 @@ if [[ -z "${SLACK_WEBHOOK_URL}" ]]; then
   echo "SLACK_WEBHOOK_URL missing!"
   exit 127
 fi
-CHANNEL=$1
-USERNAME=$3
-HEADLINE=$2
-ICON_EMOJI=$4
-BODY=$5
-IMAGE_URL=$6
 
-if [[ -z "${HEADLINE}" ]]; then
-  echo "You must at least set a headline"
+
+if [[ -z "${INPUT_HEADLINE}" ]]; then
+  echo "You must at least set a INPUT_HEADLINE"
   exit 127
 fi
-if [[ -z "${CHANNEL}" ]]; then
-  echo "You must at least set a CHANNEL"
+if [[ -z "${INPUT_CHANNEL}" ]]; then
+  echo "You must at least set a INPUT_CHANNEL"
   exit 127
 fi
 
-OUTPUT_JSON=$(cat /templates/full.json | jq ".channel=\"${CHANNEL}\"")
-OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[0].text.text=\"${HEADLINE}\"")
+OUTPUT_JSON=$(cat /templates/full.json | jq ".channel=\"${INPUT_CHANNEL}\"")
+OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".text=\"${INPUT_HEADLINE}\"")
 
-if [[ -z "${USERNAME}" ]]; then
+OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[0].text.text=\"${INPUT_HEADLINE}\"")
+
+if [[ -z "${INPUT_USERNAME}" ]]; then
   OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq "del(.username)")
 else
-  OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".username=\"${USERNAME}\"")
+  OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".username=\"${INPUT_USERNAME}\"")
 fi
 
-if [[ -z "${ICON_EMOJI}" ]]; then
+if [[ -z "${INPUT_ICONEMOJI}" ]]; then
   OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq "del(.icon_emoji)")
 else
-  OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".icon_emoji=\"${ICON_EMOJI}\"")
+  OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".icon_emoji=\"${INPUT_ICONEMOJI}\"")
 fi
 
-if [[ -z "${BODY}" ]]; then
+if [[ -z "${INPUT_BODY}" ]]; then
   OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq "del(.blocks[1,2])")
 else
-  if [[ -z "${IMAGE_URL}" ]]; then
+  if [[ -z "${INPUT_IMAGEURL}" ]]; then
+
     OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq "del(.blocks[2].accessory)")
-    OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[2].text.text=\"${BODY}\"")
+    OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[2].text.text=\"${INPUT_BODY}\"")
   else
-    OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[2].accessory.image_url=\"${IMAGE_URL}\"")
-    OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[2].text.text=\"${BODY}\"")
+    OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[2].accessory.image_url=\"${INPUT_IMAGEURL}\"")
+    OUTPUT_JSON=$(echo ${OUTPUT_JSON} | jq ".blocks[2].text.text=\"${INPUT_BODY}\"")
   fi
 fi
 
-
+#echo $OUTPUT_JSON
 #curl -X POST -v -H 'Content-type: application/json' --data @message.json $SLACK_WEBHOOK_URL
-curl -X POST -s -H 'Content-type: application/json' --data @message.json $SLACK_WEBHOOK_URL
+curl -X POST -s  --data-urlencode "payload=${OUTPUT_JSON}"  $SLACK_WEBHOOK_URL

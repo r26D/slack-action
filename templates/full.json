@@ -2,6 +2,7 @@
   "channel": "",
   "username": "",
   "icon_emoji": "",
+  "text": "",
   "blocks": [
     {
       "type": "section",
