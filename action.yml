@@ -1,6 +1,14 @@
 name: 'Slack Action'
 description: 'This action makes it easy to send a Slack WebHook Message'
 inputs:
+  channel:
+      description: "This is the channel to post into - prefix with a #"
+      required: true
+      default: "#general"
+  username:
+      description: "The username you want the post as"
+  iconEmoji:
+      description: "An icon to use for user of the post"
   headline:
     description: "This is the bold headline for the block"
     required: true
@@ -12,6 +20,9 @@ runs:
   using: 'docker'
   image: "docker://delmendo/slack-action:latest"
   args:
+    - ${{ inputs.channel }}
     - ${{ inputs.headline }}
+    - ${{ inputs.username }}
+    - ${{ inputs.iconEmoji }}
     - ${{ inputs.body }}
     - ${{ inputs.imageUrl }}

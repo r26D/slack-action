@@ -1,6 +1,8 @@
 # Slack Action
 
-This action prints "Hello World" to the log or "Hello" + the name of a person to greet. To learn how this action was built, see "[Creating a Docker container action](https://help.github.com/en/articles/creating-a-docker-container-action)" in the GitHub Help documentation.
+This action relies on having the Incoming WebHook app [https://slack.com/apps/A0F7XDUAZ-incoming-webhooks]] installed on your slack.
+This allows you a lot more customizing.
+
 
 ## ENV
 
@@ -9,6 +11,14 @@ This action prints "Hello World" to the log or "Hello" + the name of a person to
 You must set an env with the url of the slack web hook to use for the action.
 
 ## Inputs
+### `channel`
+**Required** This is the channel the message will be sent to.
+
+### `username`
+Optional - this is the username used for the message
+
+### `iconEmoji`
+Optional - this icon will be used in the post
 
 ### `headline`
 
@@ -28,6 +38,9 @@ uses: r26d/slack-action@master
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL}}
 with:
+  channel: #general
+  username: me
+  icon_emoji: :ghost:
   headline: "My First Headline"
   body: "I hope this makes things easier"
   imageUrl: "https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
