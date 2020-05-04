@@ -1,6 +1,6 @@
 # Slack Action
 
-This action relies on having the Incoming WebHook app [https://slack.com/apps/A0F7XDUAZ-incoming-webhooks]] installed on your slack.
+This action relies on having the Incoming WebHook app (https://slack.com/apps/A0F7XDUAZ-incoming-webhooks) installed on your slack.
 This allows you a lot more customizing.
 
 
@@ -38,9 +38,9 @@ uses: r26d/slack-action@master
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL}}
 with:
-  channel: #general
+  channel: "#general"
   username: me
-  icon_emoji: :ghost:
+  icon_emoji: ":ghost:"
   headline: "My First Headline"
   body: "I hope this makes things easier"
   imageUrl: "https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
