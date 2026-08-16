@@ -32,4 +32,4 @@ runs:
         INPUT_HEADLINE: ${{ inputs.headline }}
         INPUT_BODY: ${{ inputs.body }}
         INPUT_IMAGEURL: ${{ inputs.imageUrl }}
-      run: ${{ github.action_path }}/entrypoint.sh
+      run: ${{ github.action_path }}/send_slack_message.sh

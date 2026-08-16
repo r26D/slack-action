@@ -9,4 +9,4 @@ export INPUT_HEADLINE="This is a test"
 export INPUT_BODY="Starting the process to build and deploy the *Public Web Site*"
 export INPUT_IMAGEURL="https://bit.ly/3d82tTU"
 
-./entrypoint.sh
+./send_slack_message.sh
