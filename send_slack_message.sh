@@ -3,6 +3,11 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. See https://jqlang.github.io/jq/download/"
+  exit 1
+fi
+
 if [[ -z "${SLACK_WEBHOOK_URL}" ]]; then
   echo "SLACK_WEBHOOK_URL missing!"
   exit 127
