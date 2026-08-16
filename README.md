@@ -22,25 +22,25 @@ Optional - this icon will be used in the post
 
 ### `headline`
 
-**Required** This is the main headline of the mssage 
+**Required** This is the main headline of the message
 ### `body`
 
 **Required** (If you are going to do an image) This is the text underneath the headline
 ### `imageUrl`
-This is a url for the image to be used on the specific message. 
+This is a url for the image to be used on the specific message.
 
 Emojis can be done inline as text  :smile:
 
 ## Example usage
 
 ```yaml
-uses: r26d/slack-action@master
+uses: r26d/slack-action@v3
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL}}
 with:
   channel: "#general"
   username: me
-  icon_emoji: ":ghost:"
+  iconEmoji: ":ghost:"
   headline: "My First Headline"
   body: "I hope this makes things easier"
   imageUrl: "https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
