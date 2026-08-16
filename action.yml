@@ -1,5 +1,9 @@
 name: 'Slack Action'
 description: 'This action makes it easy to send a Slack WebHook Message'
+author: 'r26D, LLC'
+branding:
+  icon: 'message-square'
+  color: 'purple'
 inputs:
   channel:
     description: "This is the channel to post into - prefix with a #"
